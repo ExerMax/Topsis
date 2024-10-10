@@ -199,12 +199,7 @@ namespace Topsis.src
                 { 
                     Option = x.Option,
                     Criterion = x.Criterion,
-                    Value = _perfectSolutions.Where(y => y.Criterion == x.Criterion).First().Value - x.Value
-                }).Select(x => new Index() 
-                { 
-                    Criterion = x.Criterion, 
-                    Option = x.Option, 
-                    Value = x.Value * x.Value
+                    Value = Math.Pow(_perfectSolutions.Where(y => y.Criterion == x.Criterion).First().Value - x.Value, 2)
                 });
 
             _intuitiveProximityToIdealSolution = options.Select(x => new Index()
